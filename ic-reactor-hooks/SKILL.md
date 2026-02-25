@@ -1,5 +1,5 @@
 ---
-name: ic-reactor-hooks-skill
+name: ic-reactor-hooks
 description: Create, refactor, review, and document IC Reactor React hook integrations for Internet Computer (ICP) apps. Use when working with @ic-reactor/react, createActorHooks, createQuery/createMutation factory patterns, useActorMethod, TanStack Query cache invalidation, generated hooks from the ic-reactor CLI or Vite plugin, or when explaining hook usage inside React components versus imperative usage outside React (fetch/execute/invalidate in loaders, actions, services, and tests).
 ---
 

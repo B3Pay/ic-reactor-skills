@@ -13,7 +13,7 @@ This skill helps AI agents generate correct IC Reactor code for:
 
 ## Skill Location
 
-This repository keeps the skill in a subfolder so the repository name can remain `ic-reactor-hooks-skill` while the installed skill name stays short:
+This repository keeps the skill in a subfolder so the repository name can remain `ic-reactor-skills` while the installed skill name stays short:
 
 - `ic-reactor-hooks/` (skill folder)
 
@@ -31,13 +31,13 @@ Use your skill installer to install from the `ic-reactor-hooks/` subfolder in th
 Example prompt for an agent with a skill installer:
 
 ```text
-Install the skill from github.com/B3Pay/ic-reactor-hooks-skill path ic-reactor-hooks
+Install the skill from github.com/B3Pay/ic-reactor-skills path ic-reactor-hooks
 ```
 
 For the `skills` CLI (multi-skill repo scan), use nested discovery and select the skill:
 
 ```bash
-npx skills add B3Pay/ic-reactor-hooks-skill --full-depth --skill ic-reactor-hooks
+npx skills add B3Pay/ic-reactor-skills --full-depth --skill ic-reactor-hooks
 ```
 
 ## Use the Skill

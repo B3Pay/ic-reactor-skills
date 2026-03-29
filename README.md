@@ -24,6 +24,23 @@ This repository keeps the skill in a subfolder so the repository name can remain
 - `ic-reactor-hooks/references/patterns.md` — concrete IC Reactor patterns and examples
 - `ic-reactor-hooks/assets/ic-reactor-icon.svg` — icon for store UIs
 
+## Multi-Agent Support
+
+This skill includes metadata for multiple AI agent platforms:
+
+| Agent Platform   | Config File                              |
+| ---------------- | ---------------------------------------- |
+| OpenAI Codex     | `ic-reactor-hooks/agents/openai.yaml`    |
+| Claude           | `ic-reactor-hooks/agents/claude.yaml`    |
+| GitHub Copilot   | `ic-reactor-hooks/agents/copilot.yaml`   |
+| Cursor           | `ic-reactor-hooks/agents/openai.yaml` *  |
+
+\* Cursor uses the OpenAI-compatible metadata file.
+
+## Connection to Main Repo
+
+This skill is also available in-repo inside the main IC Reactor repository at [`skill-packages/ic-reactor-hooks/`](https://github.com/B3Pay/ic-reactor/tree/main/skill-packages/ic-reactor-hooks). Both locations contain the same skill content and multi-agent metadata so the skill works regardless of which repo an agent discovers it from.
+
 ## Install (Repo Path)
 
 Use your skill installer to install from the `ic-reactor-hooks/` subfolder in this GitHub repository.
@@ -56,13 +73,15 @@ The validator used by the Skill Creator requires `PyYAML`.
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -U pip pyyaml
-python /Users/behraddeylami/.codex/skills/.system/skill-creator/scripts/quick_validate.py ./ic-reactor-hooks
+python quick_validate.py ./ic-reactor-hooks
 ```
 
 ## Store / Catalog Submission Checklist
 
 - [x] `ic-reactor-hooks/SKILL.md` present
 - [x] `ic-reactor-hooks/agents/openai.yaml` with display metadata
+- [x] `ic-reactor-hooks/agents/claude.yaml` with display metadata
+- [x] `ic-reactor-hooks/agents/copilot.yaml` with display metadata
 - [x] icon assets included
 - [x] trigger-rich `description` in `SKILL.md` frontmatter
 - [x] default prompt mentions `$ic-reactor-hooks`

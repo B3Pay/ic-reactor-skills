@@ -1,93 +1,54 @@
-# IC Reactor Hooks Skill (ICP)
+# IC Reactor skills have moved
 
-Codex/agent skill for building and refactoring `@ic-reactor/react` integrations in Internet Computer (ICP) projects.
+The IC Reactor agent skill now lives in the main repository, next to the code
+it describes, and is versioned with each release:
 
-This skill helps AI agents generate correct IC Reactor code for:
+**[B3Pay/ic-reactor → `skill-packages/ic-reactor`](https://github.com/B3Pay/ic-reactor/tree/main/skill-packages/ic-reactor)**
 
-- `createActorHooks(...)`
-- `createQuery` / `createMutation` factory modules
-- `useActorMethod`
-- TanStack Query cache invalidation
-- generated hooks from `@ic-reactor/cli` and `@ic-reactor/vite-plugin`
-- usage inside React components vs imperative usage outside React (`fetch`, `execute`, `invalidate`)
+It replaces the `ic-reactor-hooks` skill that used to live here. That skill
+was written for contributors to the IC Reactor repository and pointed at its
+source paths; the new `ic-reactor` skill is written for apps that install
+`@ic-reactor/*` and uses only public APIs. This repository is no longer
+updated.
 
-## Skill Location
+## Install the current skill
 
-This repository keeps the skill in a subfolder so the repository name can remain `ic-reactor-skills` while the installed skill name stays short:
+### Claude Code
 
-- `ic-reactor-hooks/` (skill folder)
-
-## Skill Files
-
-- `ic-reactor-hooks/SKILL.md` — skill instructions + trigger description
-- `ic-reactor-hooks/agents/openai.yaml` — store/listing metadata
-- `ic-reactor-hooks/references/patterns.md` — concrete IC Reactor patterns and examples
-- `ic-reactor-hooks/assets/ic-reactor-icon.svg` — icon for store UIs
-
-## Multi-Agent Support
-
-This skill includes metadata for multiple AI agent platforms:
-
-| Agent Platform   | Config File                              |
-| ---------------- | ---------------------------------------- |
-| OpenAI Codex     | `ic-reactor-hooks/agents/openai.yaml`    |
-| Claude           | `ic-reactor-hooks/agents/claude.yaml`    |
-| GitHub Copilot   | `ic-reactor-hooks/agents/copilot.yaml`   |
-| Cursor           | `ic-reactor-hooks/agents/openai.yaml` *  |
-
-\* Cursor uses the OpenAI-compatible metadata file.
-
-## Connection to Main Repo
-
-This skill is also available in-repo inside the main IC Reactor repository at [`skill-packages/ic-reactor-hooks/`](https://github.com/B3Pay/ic-reactor/tree/main/skill-packages/ic-reactor-hooks). Both locations contain the same skill content and multi-agent metadata so the skill works regardless of which repo an agent discovers it from.
-
-## Install (Repo Path)
-
-Use your skill installer to install from the `ic-reactor-hooks/` subfolder in this GitHub repository.
-
-Example prompt for an agent with a skill installer:
+The main repository is a Claude Code plugin marketplace:
 
 ```text
-Install the skill from github.com/B3Pay/ic-reactor-skills path ic-reactor-hooks
+/plugin marketplace add B3Pay/ic-reactor
+/plugin install ic-reactor@ic-reactor
 ```
 
-For the `skills` CLI (multi-skill repo scan), use nested discovery and select the skill:
+### Other agents (Codex, Cursor, Copilot, Gemini CLI, OpenCode, ...)
+
+With the [`skills`](https://github.com/vercel-labs/skills) CLI, from your
+app's root:
 
 ```bash
-npx skills add B3Pay/ic-reactor-skills --full-depth --skill ic-reactor-hooks
+npx skills add B3Pay/ic-reactor --skill ic-reactor
 ```
 
-## Use the Skill
+### Agents without skill support
 
-Example usage:
+Point your agent at the guides IC Reactor publishes:
 
-```text
-Use $ic-reactor-hooks to build a reusable query/mutation factory pair for my canister and show usage inside a React component and in a route loader.
-```
+- `node_modules/@ic-reactor/<package>/llms.txt`: the guide for the version
+  your app has installed
+- https://ic-reactor.b3pay.net/llms.txt: index of the docs
+- https://ic-reactor.b3pay.net/llms-full.txt: the complete guide
 
-## Validation (Local)
+## If you installed `ic-reactor-hooks` from here
 
-The validator used by the Skill Creator requires `PyYAML`.
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -U pip pyyaml
-python quick_validate.py ./ic-reactor-hooks
-```
-
-## Store / Catalog Submission Checklist
-
-- [x] `ic-reactor-hooks/SKILL.md` present
-- [x] `ic-reactor-hooks/agents/openai.yaml` with display metadata
-- [x] `ic-reactor-hooks/agents/claude.yaml` with display metadata
-- [x] `ic-reactor-hooks/agents/copilot.yaml` with display metadata
-- [x] icon assets included
-- [x] trigger-rich `description` in `SKILL.md` frontmatter
-- [x] default prompt mentions `$ic-reactor-hooks`
-- [x] skill folder name matches skill name (`ic-reactor-hooks`)
-- [ ] submit this repo to the curated skills catalog/store process (platform-specific)
+Remove it and install `ic-reactor` as shown above, or delete the
+`ic-reactor-hooks` folder from your agent's skills directory (for example
+`.claude/skills/ic-reactor-hooks/`). The `ic-reactor-hooks` folder in this
+repository is now a stub that sends an agent to the new skill and the
+published guides, so an old install still leads somewhere current.
 
 ## License
 
-MIT (skill content). IC Reactor logo/icon remains subject to the IC Reactor project licensing and branding terms.
+MIT (skill content). IC Reactor logo/icon remains subject to the IC Reactor
+project licensing and branding terms.
